@@ -45,10 +45,6 @@ ADD root \
     #ampache-${AMPACHE_VER}_all.zip \
     /
 
-RUN /scripts/configure/apache.sh && \
-    /scripts/configure/mysql.sh && \
-    /scripts/configure/ampache.sh
-
 EXPOSE 80 443
 
-ENTRYPOINT ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+ENTRYPOINT [ "/scripts/entrypoint.sh" ]
