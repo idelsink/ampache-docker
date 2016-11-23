@@ -17,27 +17,26 @@ ENV MYSQL_DATA_DIR=/var/lib/mysql \
 # update, upgrade and install:
 # supervisor, apache2, mysql, pwgen, php, ffmpeg
 RUN apk --no-cache update && \
-    apk --no-cache upgrade && \
     apk add --no-cache \
-        supervisor \
         apache2 \
         apache2-utils \
+        ffmpeg \
         mysql \
         mysql-client \
-        pwgen \
         php5 \
-        php5-xml \
-        php5-json \
-        php5-pdo \
-        php5-pdo_mysql \
-        php5-curl \
-        php5-iconv \
         php5-apache2 \
-        php5-openssl \
-        php5-zlib \
+        php5-curl \
         php5-gd \
         php5-gettext \
-        ffmpeg
+        php5-iconv \
+        php5-json \
+        php5-openssl \
+        php5-pdo \
+        php5-pdo_mysql \
+        php5-xml \
+        php5-zlib \
+        pwgen \
+        supervisor
 
 WORKDIR /
 
