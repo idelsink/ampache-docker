@@ -8,6 +8,9 @@ chown -R apache:www-data ${AMPACHE_DIR}
 # set parameters
 sed -i 's/#\(.*rewrite_module.*\)/\1/g' /etc/apache2/httpd.conf
 echo "PidFile /var/run/apache2.pid" >> /etc/apache2/httpd.conf
-echo "20 8 * * * apache www-data ${AMPACHE_DIR}/bin/catalog_update.inc" >> /etc/crontab
+
+# cron update
+echo "0 3 * * * apache www-data ${AMPACHE_DIR}/bin/catalog_update.inc" >> /etc/crontab
+
 sed -i 's/\(post_max_size\).*/\1 = 50M/g' /etc/php5/php.ini
 sed -i 's/\(upload_max_filesize\).*/\1 = 30M/g' /etc/php5/php.ini
