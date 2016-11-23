@@ -11,7 +11,7 @@ sed -i "s@\(port\).*@\1 = $MYSQL_PORT@g" /etc/mysql/my.cnf
 sed -i "s@\(socket\).*@\1 = $MYSQL_SOCKET@g" /etc/mysql/my.cnf
 
 if [[ ! -d ${MYSQL_DATA_DIR}/mysql ]]; then
-    echo "=> An empty or uninitialized MySQL volume is detected in $MYSQL_DIR"
+    echo "=> An empty or uninitialized MySQL volume is detected in $MYSQL_DATA_DIR"
     echo "=> Installing MySQL ..."
     mysql_install_db --datadir=${MYSQL_DATA_DIR} --user=${MYSQL_USER} > /dev/null 2>&1
     echo "=> Done!"
