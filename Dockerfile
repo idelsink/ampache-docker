@@ -1,6 +1,6 @@
 FROM alpine:3.4
 MAINTAINER Ingmar Delsink https://github.com/idelsink
-label version="0.1" \
+label version="0.2" \
       description="Ampache docker image with Linux Alpine"
 
 ENV APACHE_WEB_ROOT=/var/www/localhost
