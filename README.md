@@ -91,8 +91,8 @@ Players tested:
 
 -   Based on lightweight [Alpine Linux](https://alpinelinux.org/)
 -   [Apache](https://httpd.apache.org/)
--   [PHP](http://php.net/)
 -   [MySQL](http://mariadb.org/)
+-   [PHP](http://php.net/)
 -   [Ampache](http://ampache.org/)
 -   [FFmpeg](https://www.ffmpeg.org/) for all your transcoding needs
 
