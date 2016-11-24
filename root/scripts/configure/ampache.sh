@@ -2,8 +2,8 @@
 
 # setup folder
 mkdir -p ${AMPACHE_DIR}
-unzip -q /ampache-${AMPACHE_VER}_all.zip -d ${AMPACHE_DIR}
-chown -R apache:www-data ${AMPACHE_DIR}
+unzip -q /ampache-${AMPACHE_VER}_all.zip -d ${AMPACHE_DIR} && chown -R apache:www-data ${AMPACHE_DIR}
+mkdir -p /var/log/ampache/ && chown -R apache:www-data /var/log/ampache/
 
 # set parameters
 sed -i 's/#\(.*rewrite_module.*\)/\1/g' /etc/apache2/httpd.conf
