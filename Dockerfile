@@ -42,8 +42,8 @@ RUN apk --no-cache update && \
 WORKDIR /
 
 ADD root \
-    #https://github.com/ampache/ampache/releases/download/${AMPACHE_VER}/ampache-${AMPACHE_VER}_all.zip \
-    ampache-${AMPACHE_VER}_all.zip \
+    https://github.com/ampache/ampache/releases/download/${AMPACHE_VER}/ampache-${AMPACHE_VER}_all.zip \
+    #ampache-${AMPACHE_VER}_all.zip \
     /
 
 EXPOSE 80 443
