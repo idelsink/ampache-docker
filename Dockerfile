@@ -26,6 +26,7 @@ RUN apk --no-cache update && \
         php5 \
         php5-apache2 \
         php5-curl \
+        php5-dom \
         php5-gd \
         php5-gettext \
         php5-iconv \
