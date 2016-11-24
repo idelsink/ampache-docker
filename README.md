@@ -38,6 +38,7 @@ docker logs -f ampache
 The output would look something like this:
 
 ```text
+~~ configuring system if not yet configured ~~
 => An empty or uninitialized MySQL volume is detected in /var/lib/mysql
 => Installing MySQL ...
 => Done!
@@ -48,7 +49,7 @@ The output would look something like this:
 
 ========================================================================
 Random generated password for root is:
-'9R0Y8sonEfBg5gg48XRy6cW2mr7QiZA9ZzsANAvT1TOWGUIukvnOpV5t9ymCgzuZ7jqN2N7QI9YuQCWlbkOt2wpGfabHa3GZ45ly'
+'P6eKWRlemOmuLHTUv8lTNxSq0xGepZ7rE5u7N7aRW9NuxHV5YA6q7rq9NM3BqeAVGK0TUi4DfCpcerXSR0MOlVJYl4RI0wHIHrlz'
 You can now connect to this MySQL Server using:
 
     mysql -uroot -p<password> -h<host> -P<port>
@@ -57,11 +58,34 @@ Change the above password if deemed necessary.
 MySQL user 'root' only allows local connections.
 ========================================================================
 
-2016-11-23 23:13:36,132 CRIT Set uid to user 0
-crond[329]: crond (busybox 1.24.2) started, log level 8
+~~ starting the service manager supervisord ~~
+2016-11-24 20:06:31,735 CRIT Set uid to user 0
+crond[332]: crond (busybox 1.24.2) started, log level 8
 ```
 
 Follow the rest of the steps from the summary.
+
+## Available Players
+
+> Ampache is more than only a web interface. Several backends are implemented to
+> ensure you can stream your media from anywhere. Select backends to enable.
+> Depending the backend, you may need to perform additional configuration.
+> See [wiki page](https://github.com/ampache/ampache/wiki/API).
+
+Players tested:
+
+-   [x] Web interface
+-   [x] Ampache API
+-   [x] Subsonic    
+-   [ ] Plex       
+-   [ ] UPnP         
+-   [ ] DAAP (iTunes)
+-   [ ] WebDAV        
+
+## Some extra notes
+
+-   Make sure that your volume is mounted correctly, e.g. if using SELinux make sure to add the appropriate permission labels
+-   Make sure not to use a port that is already used by another webserver/process.
 
 ## Image stack
 
@@ -70,6 +94,7 @@ Follow the rest of the steps from the summary.
 -   [PHP](http://php.net/)
 -   [MySQL](http://mariadb.org/)
 -   [Ampache](http://ampache.org/)
+-   [FFmpeg](https://www.ffmpeg.org/) for all your transcoding needs
 
 ## License
 
