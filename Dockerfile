@@ -21,6 +21,7 @@ RUN apk --no-cache update && \
         apache2 \
         apache2-utils \
         ffmpeg \
+        file \
         mysql \
         mysql-client \
         php5 \
