@@ -46,6 +46,6 @@ ADD root \
     #ampache-${AMPACHE_VER}_all.zip \
     /
 
-EXPOSE 80 443
+EXPOSE 80 443 32400
 
 ENTRYPOINT [ "/scripts/entrypoint.sh" ]
