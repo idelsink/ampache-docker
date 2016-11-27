@@ -18,11 +18,12 @@ docker run --name=ampache -d -v /path/to/your/music:/media:ro -p 80:80 idelink/a
 -   New database user
 -   Installation type: whatever you like
 -   Transcoding: Template Configuration => ffmpeg
--   Players: do whatever you like (not tested, if not working create an issue please)
+-   Players: do whatever you like (See [Available Players](#available-players))
 -   Create config
 -   Create admin account
 -   Update
 -   And you're done!
+-   Now just add your catalog(s) end configure it like you want it.
 
 ## Installation
 
@@ -63,22 +64,22 @@ MySQL user 'root' only allows local connections.
 crond[332]: crond (busybox 1.24.2) started, log level 8
 ```
 
-Follow the rest of the steps from the summary.
+Follow the rest of the steps from the installation summary.
 
 ### Plex backend
 
-To setup the Plex backend do the following:
+To setup the [Plex backend](https://github.com/ampache/ampache/wiki/API#plex-api) do the following:
 
--   Pass an extra port while starting docker for the Plex backend pointing to `32400`.  
+-   Pass an extra port parameter while starting docker for the Plex backend pointing to port `32400`.  
     For example add `-p 32400:32400` to the `docker run` command.
--   Enable the Plex backend (if not done during the installation process at `System > Use Plex backend > Enable`)
--   **Manually** go to the `login.php` page at <http://[ip]:[plex port]/web/login.php>
+-   If not already done so during the Ampache setup process, enable the Plex backend at `System > Use Plex backend > Enable`
+-   **Manually** go to the `login.php` page at `http://[ip]:[plex port]/web/login.php`
 -   Login with an Ampache account
 -   After login this page will ***NOT*** forward you to another page.
--   **Manually** go to the `index.php` page at <http://[ip]:[plex port]/web/index.php>
+-   **Manually** go to the `index.php` page at `http://[ip]:[plex port]/web/index.php`
 -   Link Ampache to an existing [Plex](plex.tv) account.
--   Make sure that the extra Plex port is available outside of your network via port forwarding, if you not only want to use it locally.
--   Now use the official or any Plex application to browse/play your content. (tested with the *official* Plex application on an Android v6.0.1)
+-   Setup port forwarding if applicable.
+-   Now use the official or any Plex application to browse/play your content. (tested with the *official* Plex application on Android 6.0.1)
 
 ## Available Players
 
@@ -99,7 +100,7 @@ Players tested:
 
 ## Some extra notes
 
--   Make sure that your volume is mounted correctly, e.g. if using SELinux make sure to add the appropriate permission labels
+-   Make sure that your volume is mounted correctly, e.g. if using SELinux make sure to add the appropriate permission labels. (See [this](https://docs.docker.com/engine/tutorials/dockervolumes/#/volume-labels))
 -   Make sure not to use a port that is already used by another webserver/process.
 
 ## Image stack
