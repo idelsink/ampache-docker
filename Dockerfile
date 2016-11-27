@@ -35,7 +35,9 @@ RUN apk --no-cache update && \
         php5-openssl \
         php5-pdo \
         php5-pdo_mysql \
+        php5-sockets \
         php5-xml \
+        php5-xmlreader \
         php5-zlib \
         pwgen \
         supervisor
