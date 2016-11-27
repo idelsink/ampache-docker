@@ -9,7 +9,9 @@ mkdir -p /var/log/ampache/ && chown -R apache:www-data /var/log/ampache/
 # convert line ending from dos2unix
 # ignoring all binary files
 echo "=> Convert line ending with dos2unix in ampache files"
-find "${APACHE_WEB_ROOT}" -type f -exec sh -c "file -i {} | grep -v binary >/dev/null" \; -exec dos2unix {} \;
+echo -e ""
+find "${AMPACHE_DIR}" -type f -exec sh -c "file -i {} | grep -v binary >/dev/null" \; -exec echo -en "\e[1A\033[K" \; -exec sh -c 'echo $(echo {} | sed "s@${AMPACHE_DIR}/@@g")|cut -c0-75' \; -exec dos2unix {} \;
+echo -e "\e[1A\033[K=> Done."
 
 # set parameters
 sed -i 's/#\(.*rewrite_module.*\)/\1/g' /etc/apache2/httpd.conf
