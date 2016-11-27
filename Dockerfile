@@ -20,6 +20,7 @@ RUN apk --no-cache update && \
     apk add --no-cache \
         apache2 \
         apache2-utils \
+        apache2-webdav \
         ffmpeg \
         file \
         mysql \

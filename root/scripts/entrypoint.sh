@@ -36,4 +36,4 @@ fi
 
 # start supervisord
 echo "~~ Starting the service manager supervisord ~~"
-/usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+/usr/bin/supervisord -c /etc/supervisord.conf
