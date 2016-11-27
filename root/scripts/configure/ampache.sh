@@ -33,3 +33,7 @@ sed -i "s/;waveform = \"false\"/waveform = \"true\"/g" ${AMPACHE_DIR}/config/amp
 
 # tmp_dir_path
 sed -i "s/;tmp_dir_path = \"false\"/tmp_dir_path = \"\/tmp\/ampache\"/g" ${AMPACHE_DIR}/config/ampache.cfg.php.dist
+
+# debug
+# path
+sed -i "s/;log_path/log_path/g" ${AMPACHE_DIR}/config/ampache.cfg.php.dist
