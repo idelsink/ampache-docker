@@ -38,6 +38,19 @@ A simple checklist to test if everything is working correctly.
 
 ### Plex
 
+-   [ ] Plex backend install can be completed via steps in [README.md](./README.md)
+-   [ ] Plex backend **Login** reachable
+    -   [ ] Local IP login <http://ip:port/web/login.php>
+    -   [ ] External ip via port forwading <http://url:port/web/login.php>
+-   [ ] Plex backend **Index** reachable
+    -   [ ] Local IP login <http://ip:port/web/index.php>
+    -   [ ] External ip via port forwading <http://url:port/web/index.php>
+-   [ ] Can login at <http://ip:port/web/login.php> page and manually go to <http://url:port/web/index.php>
+-   [ ] Link ampache to Plex account
+-   [ ] Set Plex email in admin account
+-   [ ] Browse content via Plex application
+-   [ ] Play content via Plex application
+
 ### Webdav
 
 ### UPnP / DLNA

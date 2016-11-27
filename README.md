@@ -65,6 +65,21 @@ crond[332]: crond (busybox 1.24.2) started, log level 8
 
 Follow the rest of the steps from the summary.
 
+### Plex backend
+
+To setup the Plex backend do the following:
+
+-   Pass an extra port while starting docker for the Plex backend pointing to `32400`.  
+    For example add `-p 32400:32400` to the `docker run` command.
+-   Enable the Plex backend (if not done during the installation process at `System > Use Plex backend > Enable`)
+-   **Manually** go to the `login.php` page at <http://[ip]:[plex port]/web/login.php>
+-   Login with an Ampache account
+-   After login this page will ***NOT*** forward you to another page.
+-   **Manually** go to the `index.php` page at <http://[ip]:[plex port]/web/index.php>
+-   Link Ampache to an existing [Plex](plex.tv) account.
+-   Make sure that the extra Plex port is available outside of your network via port forwarding, if you not only want to use it locally.
+-   Now use the official or any Plex application to browse/play your content. (tested with the *official* Plex application on an Android v6.0.1)
+
 ## Available Players
 
 > Ampache is more than only a web interface. Several backends are implemented to
@@ -77,7 +92,7 @@ Players tested:
 -   [x] Web interface
 -   [x] Ampache API
 -   [x] Subsonic    
--   [ ] Plex       
+-   [x] Plex       
 -   [ ] UPnP         
 -   [ ] DAAP (iTunes)
 -   [ ] WebDAV        
