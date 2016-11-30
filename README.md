@@ -7,7 +7,7 @@ See:  [hub.docker.com/r/idelsink/ampache](https://hub.docker.com/r/idelsink/ampa
 ## Usage
 
 ```sh
-docker run --name=ampache -d -v /path/to/your/music:/media:ro -p 80:80 idelink/ampache
+docker run --name=ampache -d -v /path/to/your/music:/media:ro -p 80:80 idelsink/ampache
 ```
 
 ## Installation summary
