@@ -98,6 +98,61 @@ Players tested:
 -   [ ] DAAP (iTunes)
 -   [ ] WebDAV        
 
+## Update
+
+To update to the newest docker image, if necessary, a backup can be made.
+This is done by running a small script inside the docker container.
+This will backup the database and Ampache configuration.
+
+### Backup / restore configurations
+
+Follow these steps to perform a backup of Ampache.
+Follow Steps 8 to (end) to restore a backup of Ampache.
+
+1.  Find your docker name / ID
+```sh
+docker ps
+```
+
+2.  Connect to the running container
+```sh
+docker exec -it <ID or name> sh
+```
+
+3.  Run the backup script (inside the container)
+```sh
+mkdir /backup
+/scripts/backup.sh b /backup
+```
+
+4.  Follow the instructions
+
+5.  Exit the docker container
+```sh
+exit
+```
+
+6.  Copy the files from the container to the host
+```sh
+docker cp <ID or name>:/backup ./backup
+```
+
+7.  Update to the new/other container and let it finish configuring
+
+8.  Copy the files from host to container
+```sh
+docker cp ./backup <ID or name>:/backup
+```
+
+9.  Restore the backup using the backup script
+```sh
+/scripts/backup.sh r /backup
+```
+
+10. Follow the instructions
+
+Exit the container and you're done.
+
 ## Some extra notes
 
 -   Make sure that your volume is mounted correctly, e.g. if using SELinux make sure to add the appropriate permission labels. (See [this](https://docs.docker.com/engine/tutorials/dockervolumes/#/volume-labels))
