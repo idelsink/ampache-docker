@@ -3,7 +3,7 @@
 # setup folder
 mkdir -p ${AMPACHE_DIR}
 echo "=> Unzip ampache archive"
-unzip -q /ampache-${AMPACHE_VER}_all.zip -d ${AMPACHE_DIR} && chown -R apache:www-data ${AMPACHE_DIR}
+unzip -q /ampache-${AMPACHE_VER}_all.zip -d ${AMPACHE_DIR}
 mkdir -p /var/log/ampache/ && chown -R apache:www-data /var/log/ampache/
 
 # convert line ending from dos2unix
@@ -18,7 +18,7 @@ sed -i 's/#\(.*rewrite_module.*\)/\1/g' /etc/apache2/httpd.conf
 echo "PidFile /var/run/apache2.pid" >> /etc/apache2/httpd.conf
 
 # cron update
-(crontab -l ; echo "0 3 * * * su -s /bin/sh apache -c \"${AMPACHE_DIR}/bin/catalog_update.inc\"")| crontab -
+(crontab -l ; echo "0 3 * * * su -s /bin/sh apache -c php \"${AMPACHE_DIR}/bin/catalog_update.inc\"")| crontab -
 
 sed -i 's/\(post_max_size\).*/\1 = 50M/g' /etc/php5/php.ini
 sed -i 's/\(upload_max_filesize\).*/\1 = 30M/g' /etc/php5/php.ini
@@ -37,3 +37,6 @@ sed -i "s/;tmp_dir_path = \"false\"/tmp_dir_path = \"\/tmp\/ampache\"/g" ${AMPAC
 # debug
 # path
 sed -i "s/;log_path/log_path/g" ${AMPACHE_DIR}/config/ampache.cfg.php.dist
+
+# set correct permissions
+chown -R apache:www-data ${AMPACHE_DIR}
