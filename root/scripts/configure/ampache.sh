@@ -18,7 +18,7 @@ sed -i 's/#\(.*rewrite_module.*\)/\1/g' /etc/apache2/httpd.conf
 echo "PidFile /var/run/apache2.pid" >> /etc/apache2/httpd.conf
 
 # cron update
-(crontab -l ; echo "0 3 * * * su -s /bin/sh apache -c php \"${AMPACHE_DIR}/bin/catalog_update.inc\"")| crontab -
+(crontab -l ; echo "0 3 * * * su -s /bin/sh apache -c \"/usr/bin/php ${AMPACHE_DIR}/bin/catalog_update.inc\"")| crontab -
 
 sed -i 's/\(post_max_size\).*/\1 = 50M/g' /etc/php5/php.ini
 sed -i 's/\(upload_max_filesize\).*/\1 = 30M/g' /etc/php5/php.ini
