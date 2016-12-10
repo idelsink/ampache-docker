@@ -34,6 +34,9 @@ done
 
 MYSQL_ROOT_PASS=${MYSQL_ROOT_PASS:-$(pwgen -s 100 1)}
 
+# when you forgot the password, this is the place of the generated password.
+echo "${MYSQL_ROOT_PASS}" > $HOME/MYSQL_ROOT_PASS_$(date '+%Y%m%d_%H%M%S')
+
 # Make sure that NOBODY can access the server without a password
 mysql -e "UPDATE mysql.user SET Password = PASSWORD('${MYSQL_ROOT_PASS}') WHERE User = 'root'"
 # Kill the anonymous users
