@@ -15,7 +15,6 @@ echo -e "\e[1A\033[K=> Done."
 
 # set parameters
 sed -i 's/#\(.*rewrite_module.*\)/\1/g' /etc/apache2/httpd.conf
-echo "PidFile /var/run/apache2.pid" >> /etc/apache2/httpd.conf
 
 # cron update
 (crontab -l ; echo "0 3 * * * su -s /bin/sh apache -c \"/usr/bin/php ${AMPACHE_DIR}/bin/catalog_update.inc\"")| crontab -
