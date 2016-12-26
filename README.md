@@ -1,4 +1,10 @@
 # Ampache Docker
+[![](https://images.microbadger.com/badges/version/idelsink/ampache.svg)](https://microbadger.com/images/idelsink/ampache "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/idelsink/ampache.svg)](https://microbadger.com/images/idelsink/ampache "Get your own image badge on microbadger.com")
+[![Docker Automated buil](https://img.shields.io/docker/automated/idelsink/ampache.svg)]()  
+[![GitHub stars](https://img.shields.io/github/stars/idelsink/ampache-docker.svg?style=social&label=Star)]()
+[![Docker Stars](https://img.shields.io/docker/stars/idelsink/ampache.svg)]()
+[![Docker Pulls](https://img.shields.io/docker/pulls/idelsink/ampache.svg)]()
 
 An [docker](https://hub.docker.com/r/idelsink/ampache/) image with the [Ampache](http://ampache.org/) music server.
 
