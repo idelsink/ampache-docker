@@ -17,6 +17,7 @@ echo -e "\e[1A\033[K=> Done."
 sed -i 's/#\(.*rewrite_module.*\)/\1/g' /etc/apache2/httpd.conf
 
 # cron update
+mkdir -p /var/lock/ampache && chown -R apache:www-data /var/lock/ampache
 (crontab -l ; echo "0 3 * * * su -s /bin/sh apache -c \"/scripts/catalog_update.sh\"")| crontab -
 
 sed -i 's/\(post_max_size\).*/\1 = 50M/g' /etc/php5/php.ini
