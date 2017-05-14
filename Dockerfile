@@ -3,10 +3,12 @@ MAINTAINER Ingmar Delsink https://github.com/idelsink
 label version="1.0.0" \
       description="Ampache docker image with Linux Alpine"
 
-ENV APACHE_WEB_ROOT=/var/www/localhost \
-    AMPACHE_VER=3.8.2 \
-    AMPACHE_DIR=${APACHE_WEB_ROOT}/ampache \
-    MYSQL_DATA_DIR=/var/lib/mysql \
+ENV APACHE_WEB_ROOT=/var/www/localhost
+
+ENV AMPACHE_VER=3.8.2 \
+    AMPACHE_DIR=${APACHE_WEB_ROOT}/ampache
+
+ENV MYSQL_DATA_DIR=/var/lib/mysql \
     MYSQL_SOCKET=/var/run/mysqld/mysqld.sock \
     MYSQL_PID=/var/run/mysqld/mysqld.pid \
     MYSQL_PORT=3306 \
