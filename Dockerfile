@@ -5,7 +5,7 @@ label version="1.0.0" \
 
 ENV APACHE_WEB_ROOT=/var/www/localhost \
     AMPACHE_VER=3.8.2 \
-    AMPACHE_DIR=${APACHE_WEB_ROOT}/ampache
+    AMPACHE_DIR=${APACHE_WEB_ROOT}/ampache \
     MYSQL_DATA_DIR=/var/lib/mysql \
     MYSQL_SOCKET=/var/run/mysqld/mysqld.sock \
     MYSQL_PID=/var/run/mysqld/mysqld.pid \
