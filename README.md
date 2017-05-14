@@ -18,7 +18,7 @@ docker run --name=ampache -d -v /path/to/your/music:/media:ro -p 80:80 idelsink/
 
 ## Installation summary
 
--   Get MySQL root password
+-   Get MySQL root password (Found in terminal or in a file in the `/root` directory in the container)
 -   Launch website (webroot/ampache; e.g. localhost/ampache)
 -   Fill in obtained root credentials
 -   New database user
@@ -161,6 +161,7 @@ Exit the container and you're done.
 
 ## Some extra notes
 
+-   The MySQL root password can be found in the `/root` directory.
 -   Make sure that your volume is mounted correctly, e.g. if using SELinux make sure to add the appropriate permission labels. (See [this](https://docs.docker.com/engine/tutorials/dockervolumes/#/volume-labels))
 -   Make sure not to use a port that is already used by another webserver/process.
 
