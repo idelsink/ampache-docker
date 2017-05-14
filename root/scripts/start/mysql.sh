@@ -1,7 +1,9 @@
 #!/usr/bin/env sh
 # start the mysql daemon in the background
 
-# configure mysql
+# delete PID file (if old one exists)
+rm -f "${MYSQL_PID}"
+
 # start mysql
 mysqld_safe \
 --basedir=/usr \

@@ -3,7 +3,8 @@
 
 
 APACHE_PIDF=/run/apache2/httpd.pid
-# delete PID file on exit
-trap "{ rm -f ${APACHE_PIDF}; exit 255; }" EXIT
+
+# delete PID file (if old one exists)
+rm -f "${APACHE_PIDF}"
 
 httpd "${@}"
