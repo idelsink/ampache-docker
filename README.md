@@ -16,12 +16,20 @@ See:  [hub.docker.com/r/idelsink/ampache](https://hub.docker.com/r/idelsink/ampa
 docker run --name=ampache -d -v /path/to/your/music:/media:ro -p 80:80 idelsink/ampache
 ```
 
+There are extra ports that can be passed to the container using the `-p` flag.
+The ports are:
+
+-   80: http: ampache
+-   443: (not used but https for the future)
+-   9001: supervisord web UI (used to manage services)
+-   32400: plex interface (see See [Plex backend](#plex-backend))
+
 ## Installation summary
 
 -   Get MySQL root password (Found in terminal or in a file in the `/root` directory in the container)
--   Launch website (webroot/ampache; e.g. localhost/ampache)
+-   Launch website (<url/ip> or localhost)
 -   Fill in obtained root credentials
--   New database user
+-   Add new database user
 -   Installation type: whatever you like
 -   Transcoding: Template Configuration => ffmpeg
 -   Players: do whatever you like (See [Available Players](#available-players))
@@ -45,7 +53,10 @@ docker logs -f ampache
 The output would look something like this:
 
 ```text
-~~ configuring system if not yet configured ~~
+~~ Configuring system if not yet configured ~~
+~~ Configuring supervisord ~~
+~~ Configuring apache ~~
+~~ Configuring mysql ~~
 => An empty or uninitialized MySQL volume is detected in /var/lib/mysql
 => Installing MySQL ...
 => Done!
@@ -56,7 +67,8 @@ The output would look something like this:
 
 ========================================================================
 Random generated password for root is:
-'P6eKWRlemOmuLHTUv8lTNxSq0xGepZ7rE5u7N7aRW9NuxHV5YA6q7rq9NM3BqeAVGK0TUi4DfCpcerXSR0MOlVJYl4RI0wHIHrlz'
+'MhKtpfjCHUzhT0vR51Sgu2iCuxlr3P97qo4D2A8jdRsOzaGsuV89nGfAEPF6qNKOIyY4FMawNJF86zOKLdg1eTykpr2vXED3wfrj
+'
 You can now connect to this MySQL Server using:
 
     mysql -uroot -p<password> -h<host> -P<port>
@@ -65,9 +77,9 @@ Change the above password if deemed necessary.
 MySQL user 'root' only allows local connections.
 ========================================================================
 
-~~ starting the service manager supervisord ~~
-2016-11-24 20:06:31,735 CRIT Set uid to user 0
-crond[332]: crond (busybox 1.24.2) started, log level 8
+~~ Configuring ampache ~~
+=> Unzip ampache archive
+~~ Starting the service manager supervisord ~~
 ```
 
 Follow the rest of the steps from the installation summary.
