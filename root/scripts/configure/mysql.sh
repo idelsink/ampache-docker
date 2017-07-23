@@ -1,17 +1,22 @@
 #!/usr/bin/env sh
 
+# Replace $1 with $2 in $3
+replaceInFile() {
+    sed -i "s@${1}@${2}@g" ${3}
+}
+
 # set mysql paths
 mkdir -p ${MYSQL_DATA_DIR}  && chown -R ${MYSQL_USER}:${MYSQL_USER} ${MYSQL_DATA_DIR}
 mkdir -p ${MYSQL_SOCKET%/*} && chown -R ${MYSQL_USER}:${MYSQL_USER} ${MYSQL_SOCKET%/*}
 mkdir -p ${MYSQL_PID%/*}    && chown -R ${MYSQL_USER}:${MYSQL_USER} ${MYSQL_PID%/*}
 
 # set my.cnf variables
-sed -i "s@\(datadir\).*@\1 = $MYSQL_DATA_DIR@g" /etc/mysql/my.cnf
-sed -i "s@\(port\).*@\1 = $MYSQL_PORT@g" /etc/mysql/my.cnf
-sed -i "s@\(socket\).*@\1 = $MYSQL_SOCKET@g" /etc/mysql/my.cnf
+replaceInFile "\@MYSQL_DATA_DIR\@" "${MYSQL_DATA_DIR}" /etc/mysql/my.cnf
+replaceInFile "\@MYSQL_PORT\@" "${MYSQL_PORT}" /etc/mysql/my.cnf
+replaceInFile "\@MYSQL_SOCKET\@" "${MYSQL_SOCKET}" /etc/mysql/my.cnf
 
-# create datebase
-if [[ ! -d ${MYSQL_DATA_DIR}/mysql ]]; then
+# create database
+if [ ! -d ${MYSQL_DATA_DIR}/mysql ]; then
     echo "=> An empty or uninitialized MySQL volume is detected in $MYSQL_DATA_DIR"
     echo "=> Installing MySQL ..."
     mysql_install_db --datadir=${MYSQL_DATA_DIR} --user=${MYSQL_USER} > /dev/null 2>&1
@@ -24,19 +29,19 @@ fi
 echo "=> Trying to secure database"
 echo "=> Starting MySQL service"
 /scripts/start/mysql.sh &
-RET=1
-while [[ $RET -ne 0 ]]; do
+RETURN=1
+while [ ${RETURN} -ne 0 ]; do
     echo "=> Waiting for confirmation of MySQL service startup"
     sleep 2
     mysql -uroot -e "status" > /dev/null 2>&1
-    RET=$?
+    RETURN=$?
 done
 
 MYSQL_ROOT_PASS=${MYSQL_ROOT_PASS:-$(pwgen -s 100 1)}
 
 # when you forgot the password, this is the place of the generated password.
-echo "${MYSQL_ROOT_PASS}" > $HOME/MYSQL_ROOT_PASS_$(date '+%Y%m%d_%H%M%S')
-chmod 600 $HOME/MYSQL_ROOT_PASS_$(date '+%Y%m%d_%H%M%S')
+echo "${MYSQL_ROOT_PASS}" > $HOME/MYSQL_ROOT_PASS_"$(date '+%Y%m%d_%H%M%S')"
+chmod 600 $HOME/MYSQL_ROOT_PASS_"$(date '+%Y%m%d_%H%M%S')"
 
 # Make sure that NOBODY can access the server without a password
 mysql -e "UPDATE mysql.user SET Password = PASSWORD('${MYSQL_ROOT_PASS}') WHERE User = 'root'"

@@ -3,10 +3,12 @@ MAINTAINER Ingmar Delsink https://github.com/idelsink
 label version="1.0.0" \
       description="Ampache docker image with Linux Alpine"
 
-ENV APACHE_WEB_ROOT=/var/www/localhost
+ENV APACHE_WEB_ROOT=/var/www/localhost \
+    APACHE_USER=apache \
+    APACHE_GROUP=www-data
 
-ENV AMPACHE_VER=3.8.2 \
-    AMPACHE_DIR=${APACHE_WEB_ROOT}/ampache
+ENV AMPACHE_VER=3.8.3 \
+    AMPACHE_WEB_DIR=${APACHE_WEB_ROOT}/ampache
 
 ENV MYSQL_DATA_DIR=/var/lib/mysql \
     MYSQL_SOCKET=/var/run/mysqld/mysqld.sock \
@@ -46,10 +48,14 @@ RUN apk --no-cache update && \
 WORKDIR /
 
 ADD root \
-    https://github.com/ampache/ampache/releases/download/${AMPACHE_VER}/ampache-${AMPACHE_VER}_all.zip \
-    #ampache-${AMPACHE_VER}_all.zip \
+    # https://github.com/ampache/ampache/releases/download/${AMPACHE_VER}/ampache-${AMPACHE_VER}_all.zip \
+    ampache-${AMPACHE_VER}_all.zip \
     /
 
-EXPOSE 80 443 32400
+#    80: http
+#   443: https (for future setup)
+#  9001: supervisord web
+# 32400: plex
+EXPOSE 80 443 9001 32400
 
 ENTRYPOINT [ "/scripts/entrypoint.sh" ]

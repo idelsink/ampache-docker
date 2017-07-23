@@ -13,4 +13,4 @@ mysqld_safe \
 --skip-external-locking \
 --port=${MYSQL_PORT} \
 --socket=${MYSQL_SOCKET} \
-${@} > /dev/null 2>&1
+"${@}" > /dev/null 2>&1
