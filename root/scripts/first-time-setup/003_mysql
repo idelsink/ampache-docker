@@ -1,19 +1,9 @@
 #!/usr/bin/env sh
 
-# Replace $1 with $2 in $3
-replaceInFile() {
-    sed -i "s@${1}@${2}@g" ${3}
-}
+# Include
+. "$(dirname "$0")/../shared.sh"
 
-# set mysql paths
-mkdir -p ${MYSQL_DATA_DIR}  && chown -R ${MYSQL_USER}:${MYSQL_USER} ${MYSQL_DATA_DIR}
-mkdir -p ${MYSQL_SOCKET%/*} && chown -R ${MYSQL_USER}:${MYSQL_USER} ${MYSQL_SOCKET%/*}
-mkdir -p ${MYSQL_PID%/*}    && chown -R ${MYSQL_USER}:${MYSQL_USER} ${MYSQL_PID%/*}
-
-# set my.cnf variables
-replaceInFile "\@MYSQL_DATA_DIR\@" "${MYSQL_DATA_DIR}" /etc/mysql/my.cnf
-replaceInFile "\@MYSQL_PORT\@" "${MYSQL_PORT}" /etc/mysql/my.cnf
-replaceInFile "\@MYSQL_SOCKET\@" "${MYSQL_SOCKET}" /etc/mysql/my.cnf
+echo "~~ First time setup of MySQL ~~"
 
 # create database
 if [ ! -d ${MYSQL_DATA_DIR}/mysql ]; then

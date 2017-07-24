@@ -4,6 +4,7 @@ label version="1.0.0" \
       description="Ampache docker image with Linux Alpine"
 
 ENV APACHE_WEB_ROOT=/var/www/localhost \
+    APACHE_PID_FILE=/run/apache2/httpd.pid \
     APACHE_USER=apache \
     APACHE_GROUP=www-data
 
@@ -12,7 +13,7 @@ ENV AMPACHE_VER=3.8.3 \
 
 ENV MYSQL_DATA_DIR=/var/lib/mysql \
     MYSQL_SOCKET=/var/run/mysqld/mysqld.sock \
-    MYSQL_PID=/var/run/mysqld/mysqld.pid \
+    MYSQL_PID_FILE=/var/run/mysqld/mysqld.pid \
     MYSQL_PORT=3306 \
     MYSQL_USER=mysql
 
@@ -51,6 +52,8 @@ ADD root \
     https://github.com/ampache/ampache/releases/download/${AMPACHE_VER}/ampache-${AMPACHE_VER}_all.zip \
     # ampache-${AMPACHE_VER}_all.zip \
     /
+
+RUN /scripts/configure.sh
 
 #    80: http
 #   443: https (for future setup)

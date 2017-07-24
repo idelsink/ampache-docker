@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+
+# Include
+. "$(dirname "$0")/../shared.sh"
+
+echo "~~ Configuring supervisord ~~"
+
+# log directory
+mkdir -p /var/log/supervisord
+#
+# # pid directory
+mkdir -p /run/supervisord

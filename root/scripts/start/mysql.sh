@@ -9,7 +9,7 @@ mysqld_safe \
 --basedir=/usr \
 --datadir=${MYSQL_DATA_DIR} \
 --user=${MYSQL_USER} \
---pid-file=${MYSQL_PID} \
+--pid-file=${MYSQL_PID_FILE} \
 --skip-external-locking \
 --port=${MYSQL_PORT} \
 --socket=${MYSQL_SOCKET} \
