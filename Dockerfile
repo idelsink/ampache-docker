@@ -3,14 +3,17 @@ MAINTAINER Ingmar Delsink https://github.com/idelsink
 label version="1.0.0" \
       description="Ampache docker image with Linux Alpine"
 
+# Apache
 ENV APACHE_WEB_ROOT=/var/www/localhost \
     APACHE_PID_FILE=/run/apache2/httpd.pid \
     APACHE_USER=apache \
     APACHE_GROUP=www-data
 
+# Ampache
 ENV AMPACHE_VER=3.8.3 \
     AMPACHE_WEB_DIR=${APACHE_WEB_ROOT}/ampache
 
+# MySQL
 ENV MYSQL_DATA_DIR=/var/lib/mysql \
     MYSQL_SOCKET=/var/run/mysqld/mysqld.sock \
     MYSQL_PID_FILE=/var/run/mysqld/mysqld.pid \
@@ -18,7 +21,6 @@ ENV MYSQL_DATA_DIR=/var/lib/mysql \
     MYSQL_USER=mysql
 
 # update, upgrade and install:
-# supervisor, apache2, mysql, pwgen, php, ffmpeg
 RUN apk --no-cache update && \
     apk add --no-cache \
         apache2 \
@@ -26,6 +28,7 @@ RUN apk --no-cache update && \
         apache2-webdav \
         ffmpeg \
         file \
+        git \
         mysql \
         mysql-client \
         php5 \
@@ -39,18 +42,20 @@ RUN apk --no-cache update && \
         php5-openssl \
         php5-pdo \
         php5-pdo_mysql \
+        php5-phar \
         php5-sockets \
         php5-xml \
         php5-xmlreader \
         php5-zlib \
         pwgen \
-        supervisor
+        supervisor \
+        wget
 
 WORKDIR /
 
 ADD root \
-    https://github.com/ampache/ampache/releases/download/${AMPACHE_VER}/ampache-${AMPACHE_VER}_all.zip \
-    # ampache-${AMPACHE_VER}_all.zip \
+    https://github.com/ampache/ampache/archive/${AMPACHE_VER}.zip \
+    # ampache-${AMPACHE_VER}.zip \
     /
 
 RUN /scripts/configure.sh

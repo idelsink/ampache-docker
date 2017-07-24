@@ -10,7 +10,14 @@ mkdir -p "${AMPACHE_WEB_DIR}"   && chown -R "${APACHE_USER}":"${APACHE_GROUP}" "
 mkdir -p "/var/log/ampache/"    && chown -R "${APACHE_USER}":"${APACHE_GROUP}" /var/log/ampache/
 
 echo "=> Unzip ampache archive"
-unzip -q /ampache-${AMPACHE_VER}_all.zip -d "${AMPACHE_WEB_DIR}"
+unzip -q /${AMPACHE_VER}.zip -d "/var/tmp/"
+mv "/var/tmp/ampache-${AMPACHE_VER}/"* "${AMPACHE_WEB_DIR}/"
+
+echo "=> Compose ampache"
+# update lock
+(cd "${AMPACHE_WEB_DIR}" && /composer.phar update --lock)
+# install
+(cd "${AMPACHE_WEB_DIR}" && /composer.phar install --prefer-source --no-interaction)
 
 # Fill all the parameters in the files
 fillParameters() {
