@@ -4,7 +4,7 @@ A simple checklist to test if everything is working correctly.
 
 ## Setup
 
--   [ ] Url is: <http://ip:port/ampache>
+-   [ ] Url is: <http://ip:port>
 -   [ ] Web install can be completed via steps in [README.md](./README.md)
 
 ## Usage
