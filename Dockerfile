@@ -1,6 +1,6 @@
 FROM alpine:3.4
 MAINTAINER Ingmar Delsink https://github.com/idelsink
-label version="1.0.0" \
+label version="2.0.0" \
       description="Ampache docker image with Linux Alpine"
 
 # Apache
