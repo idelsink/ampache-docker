@@ -1,6 +1,6 @@
 FROM alpine:3.4
 MAINTAINER Ingmar Delsink https://github.com/idelsink
-label version="2.0.0" \
+LABEL version="2.0.0" \
       description="Ampache docker image with Linux Alpine"
 
 # Apache
@@ -18,7 +18,8 @@ ENV MYSQL_DATA_DIR=/var/lib/mysql \
     MYSQL_SOCKET=/var/run/mysqld/mysqld.sock \
     MYSQL_PID_FILE=/var/run/mysqld/mysqld.pid \
     MYSQL_PORT=3306 \
-    MYSQL_USER=mysql
+    MYSQL_USER=mysql \
+    MYSQL_GROUP=mysql
 
 # update, upgrade and install:
 RUN apk --no-cache update && \

@@ -6,9 +6,9 @@
 echo "~~ Configuring MySQL ~~"
 
 # Create directory's
-mkdir -p "${MYSQL_DATA_DIR}"    && chown -R "${MYSQL_USER}":"${MYSQL_USER}" "${MYSQL_DATA_DIR}"
-mkdir -p "${MYSQL_SOCKET%/*}"   && chown -R "${MYSQL_USER}":"${MYSQL_USER}" "${MYSQL_SOCKET%/*}"
-mkdir -p "${MYSQL_PID_FILE%/*}" && chown -R "${MYSQL_USER}":"${MYSQL_USER}" "${MYSQL_PID_FILE%/*}"
+mkdir -p "${MYSQL_DATA_DIR}"    && chown -R "${MYSQL_USER}":"${MYSQL_GROUP}" "${MYSQL_DATA_DIR}"
+mkdir -p "${MYSQL_SOCKET%/*}"   && chown -R "${MYSQL_USER}":"${MYSQL_GROUP}" "${MYSQL_SOCKET%/*}"
+mkdir -p "${MYSQL_PID_FILE%/*}" && chown -R "${MYSQL_USER}":"${MYSQL_GROUP}" "${MYSQL_PID_FILE%/*}"
 
 # set my.cnf variables
 MYSQL_CNF="/etc/mysql/my.cnf"
