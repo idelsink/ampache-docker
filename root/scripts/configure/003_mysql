@@ -15,3 +15,9 @@ MYSQL_CNF="/etc/mysql/my.cnf"
 replaceInFile "\@MYSQL_DATA_DIR\@" "${MYSQL_DATA_DIR}" "${MYSQL_CNF}"
 replaceInFile "\@MYSQL_PORT\@" "${MYSQL_PORT}" "${MYSQL_CNF}"
 replaceInFile "\@MYSQL_SOCKET\@" "${MYSQL_SOCKET}" "${MYSQL_CNF}"
+
+# PHP ini file
+PHP5_INI="/etc/php5/php.ini"
+replaceInFile "\@MYSQL_DATA_DIR\@" "${MYSQL_DATA_DIR}" "${PHP5_INI}"
+replaceInFile "\@MYSQL_PORT\@" "${MYSQL_PORT}" "${PHP5_INI}"
+replaceInFile "\@MYSQL_SOCKET\@" "${MYSQL_SOCKET}" "${PHP5_INI}"
