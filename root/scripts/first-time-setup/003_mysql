@@ -27,7 +27,8 @@ while [ ${RETURN} -ne 0 ]; do
     RETURN=$?
 done
 
-MYSQL_ROOT_PASS=${MYSQL_ROOT_PASS:-$(pwgen -s 100 1)}
+# Generate MySQL root password
+MYSQL_ROOT_PASS="${MYSQL_ROOT_PASS:-"$(pwgen -s 100 1)"}"
 
 # when you forgot the password, this is the place of the generated password.
 echo "${MYSQL_ROOT_PASS}" > $HOME/MYSQL_ROOT_PASS_"$(date '+%Y%m%d_%H%M%S')"
