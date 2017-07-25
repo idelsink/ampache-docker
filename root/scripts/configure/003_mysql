@@ -21,3 +21,8 @@ PHP5_INI="/etc/php5/php.ini"
 replaceInFile "\@MYSQL_DATA_DIR\@" "${MYSQL_DATA_DIR}" "${PHP5_INI}"
 replaceInFile "\@MYSQL_PORT\@" "${MYSQL_PORT}" "${PHP5_INI}"
 replaceInFile "\@MYSQL_SOCKET\@" "${MYSQL_SOCKET}" "${PHP5_INI}"
+
+PHP7_INI="/etc/php7/php.ini"
+replaceInFile "\@MYSQL_DATA_DIR\@" "${MYSQL_DATA_DIR}" "${PHP7_INI}"
+replaceInFile "\@MYSQL_PORT\@" "${MYSQL_PORT}" "${PHP7_INI}"
+replaceInFile "\@MYSQL_SOCKET\@" "${MYSQL_SOCKET}" "${PHP7_INI}"

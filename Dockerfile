@@ -32,22 +32,24 @@ RUN apk --no-cache update && \
         git \
         mysql \
         mysql-client \
-        php5 \
-        php5-apache2 \
-        php5-curl \
-        php5-dom \
-        php5-gd \
-        php5-gettext \
-        php5-iconv \
-        php5-json \
-        php5-openssl \
-        php5-pdo \
-        php5-pdo_mysql \
-        php5-phar \
-        php5-sockets \
-        php5-xml \
-        php5-xmlreader \
-        php5-zlib \
+        php7 \
+        php7-apache2 \
+        php7-curl \
+        php7-dom \
+        php7-gd \
+        php7-gettext \
+        php7-iconv \
+        php7-json \
+        php7-openssl \
+        php7-pdo \
+        php7-pdo_mysql \
+        php7-phar \
+        php7-session \
+        php7-simplexml \
+        php7-sockets \
+        php7-xml \
+        php7-xmlreader \
+        php7-zlib \
         pwgen \
         supervisor \
         wget
