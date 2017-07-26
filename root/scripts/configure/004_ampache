@@ -17,6 +17,8 @@ echo "=> Compose ampache"
 (cd "${AMPACHE_WEB_DIR}" && /composer.phar update --lock)
 # install
 (cd "${AMPACHE_WEB_DIR}" && /composer.phar install --prefer-source --no-interaction)
+# Clear cache
+/composer.phar clear-cache
 
 # Fill all the parameters in the files
 fillParameters() {
