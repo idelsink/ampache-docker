@@ -3,6 +3,9 @@ MAINTAINER Ingmar Delsink https://github.com/idelsink
 LABEL version="2.0.0" \
       description="Ampache docker image with Linux Alpine"
 
+# General
+ENV TIMEZONE=""
+
 # Apache
 ENV APACHE_WEB_ROOT=/var/www/localhost \
     APACHE_PID_FILE=/run/apache2/httpd.pid \
@@ -52,6 +55,7 @@ RUN apk --no-cache update && \
         php7-zlib \
         pwgen \
         supervisor \
+        tzdata \
         wget
 
 WORKDIR /
