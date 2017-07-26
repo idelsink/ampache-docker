@@ -50,7 +50,7 @@ echo "=> Databse is less vulnerable now; Stopping MySQL service"
 mysqladmin -uroot shutdown -p${MYSQL_ROOT_PASS}
 echo ""
 echo "========================================================================"
-echo "Random generated MySQL root is: "
+echo "Random generated MySQL root password is: "
 echo ""
 echo "'${MYSQL_ROOT_PASS}'"
 echo ""
