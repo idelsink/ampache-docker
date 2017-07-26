@@ -72,32 +72,24 @@ docker logs -f ampache
 The output would look something like this:
 
 ```text
-~~ Configuring system if not yet configured ~~
-~~ Configuring supervisord ~~
-~~ Configuring apache ~~
-~~ Configuring mysql ~~
+~~ First time setup of MySQL ~~
 => An empty or uninitialized MySQL volume is detected in /var/lib/mysql
 => Installing MySQL ...
 => Done!
 => Trying to secure database
-=> Starting MySQL service
-=> Waiting for confirmation of MySQL service startup
+=> Starting MySQL service....................
 => Databse is less vulnerable now; Stopping MySQL service
 
 ========================================================================
-Random generated password for root is:
-'MhKtpfjCHUzhT0vR51Sgu2iCuxlr3P97qo4D2A8jdRsOzaGsuV89nGfAEPF6qNKOIyY4FMawNJF86zOKLdg1eTykpr2vXED3wfrj
-'
-You can now connect to this MySQL Server using:
+Random generated MySQL root password is:
 
-    mysql -uroot -p<password> -h<host> -P<port>
+'JPVxOlJhAioadRg16OfmLUTY648j7BeS9r1N8vgOY9qUsRYOgh6u5Dz8CSmqFqw84OjYT1XX9Of8X6'
 
 Change the above password if deemed necessary.
 MySQL user 'root' only allows local connections.
 ========================================================================
 
-~~ Configuring ampache ~~
-=> Unzip ampache archive
+~~ Container date output: Wed Jul 26 22:09:31 UTC 2017 ~~
 ~~ Starting the service manager supervisord ~~
 ```
 
