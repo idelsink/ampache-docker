@@ -8,6 +8,6 @@ echo "~~ Configuring supervisord ~~"
 
 # log directory
 mkdir -p /var/log/supervisord
-#
-# # pid directory
+
+# pid directory
 mkdir -p /run/supervisord

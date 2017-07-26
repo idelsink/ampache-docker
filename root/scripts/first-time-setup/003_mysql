@@ -42,7 +42,7 @@ mysql -e "DROP USER ''@'localhost'"
 mysql -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
 # Kill off the demo database
 mysql -e "DROP DATABASE test"
-# Make our changes take effect
+# Make changes take effect
 mysql -e "FLUSH PRIVILEGES"
 # Any subsequent tries to run queries this way will get access denied because lack of usr/pwd param
 
@@ -50,11 +50,9 @@ echo "=> Databse is less vulnerable now; Stopping MySQL service"
 mysqladmin -uroot shutdown -p${MYSQL_ROOT_PASS}
 echo ""
 echo "========================================================================"
-echo "Random generated password for root is: "
-echo "'${MYSQL_ROOT_PASS}' "
-echo "You can now connect to this MySQL Server using:"
+echo "Random generated MySQL root is: "
 echo ""
-echo "    mysql -uroot -p<password> -h<host> -P<port>"
+echo "'${MYSQL_ROOT_PASS}'"
 echo ""
 echo "Change the above password if deemed necessary."
 echo "MySQL user 'root' only allows local connections."
