@@ -17,18 +17,18 @@ fi
 
 # securing database
 echo "=> Trying to secure database"
-echo "=> Starting MySQL service"
+printf "=> Starting MySQL service"
 /scripts/start/mysql.sh &
 RETURN=1
 while [ ${RETURN} -ne 0 ]; do
-    echo "=> Waiting for confirmation of MySQL service startup"
-    sleep 2
+    printf "."
+    usleep 20000
     mysql -uroot -e "status" > /dev/null 2>&1
     RETURN=$?
 done
-
+printf "\n"
 # Generate MySQL root password
-MYSQL_ROOT_PASS="${MYSQL_ROOT_PASS:-"$(pwgen -s 100 1)"}"
+MYSQL_ROOT_PASS="${MYSQL_ROOT_PASS:-"$(pwgen -s 78 1)"}"
 
 # when you forgot the password, this is the place of the generated password.
 echo "${MYSQL_ROOT_PASS}" > $HOME/MYSQL_ROOT_PASS_"$(date '+%Y%m%d_%H%M%S')"
