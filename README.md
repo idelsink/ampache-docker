@@ -24,6 +24,25 @@ The ports are:
 -   9001: supervisord web UI (used to manage services)
 -   32400: plex interface (see See [Plex backend](#plex-backend))
 
+### Timezone
+
+To set the correct timezone in the Docker container, the `TIMEZONE` environment
+variable can be set. This can be done by adding the following to the `docker run`
+command:
+
+```sh
+-e TIMEZONE="Europe/Amsterdam"
+```
+
+This would result in:
+
+```sh
+docker run --name=ampache -e TIMEZONE="Europe/Amsterdam" -d -v /path/to/your/music:/media:ro -p 80:80 idelsink/ampache
+```
+
+See the [List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) that are available.
+See the docker's [run environment variables](https://docs.docker.com/engine/reference/run/) section for more information about environment variables and docker.
+
 ## Installation summary
 
 -   Get MySQL root password (Found in terminal or in a file in the `/root` directory in the container)
