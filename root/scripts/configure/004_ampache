@@ -9,9 +9,8 @@ echo "~~ Configuring Ampache ~~"
 mkdir -p "${AMPACHE_WEB_DIR}"   && chown -R "${APACHE_USER}":"${APACHE_GROUP}" "${AMPACHE_WEB_DIR}"
 mkdir -p "/var/log/ampache/"    && chown -R "${APACHE_USER}":"${APACHE_GROUP}" /var/log/ampache/
 
-echo "=> Unzip ampache archive"
-unzip -q /${AMPACHE_VER}.zip -d "/var/tmp/"
-mv "/var/tmp/ampache-${AMPACHE_VER}/"* "${AMPACHE_WEB_DIR}/"
+echo "=> Extract ampache archive"
+tar -C ${AMPACHE_WEB_DIR} -xf /${AMPACHE_VER}.tar.gz ampache-${AMPACHE_VER} --strip-components=1
 
 echo "=> Compose ampache"
 # update lock
