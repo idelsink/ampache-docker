@@ -37,7 +37,7 @@ mkdir -p "/var/lock/ampache" && chown -R "${APACHE_USER}":"${APACHE_GROUP}" "/va
 # ampache.cfg.php.dist configuration
 # local_web_path
 #   if not set, subsonic won't function from local ip
-sed -i "s/;local_web_path/local_web_path/g" ${AMPACHE_WEB_DIR}/config/ampache.cfg.php.dist
+sed -i "s@^;local_web_path.*@local_web_path = \"http://localhost/\"@g" ${AMPACHE_WEB_DIR}/config/ampache.cfg.php.dist
 
 # waveform
 sed -i "s/;waveform = \"false\"/waveform = \"true\"/g" ${AMPACHE_WEB_DIR}/config/ampache.cfg.php.dist
