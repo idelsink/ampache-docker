@@ -23,7 +23,7 @@ A simple checklist to test if everything is working correctly.
 
 ### Subsonic
 
--   [ ] Subsonic XML response at <http://url:port/ampache/rest/ping.view>
+-   [ ] Subsonic XML response at <http://url:port/rest/ping.view>
     ```xml
     <subsonic-response xmlns="http://subsonic.org/restapi" type="ampache" version="1.11.0" status="failed">
         <error code="10" message="Required parameter is missing."/>
