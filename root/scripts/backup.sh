@@ -3,7 +3,7 @@
 # - database
 # - Ampache configuration
 
-AMPACHE_CONF="${AMPACHE_DIR}/config/ampache.cfg.php"
+AMPACHE_CONF="${AMPACHE_WEB_DIR}/config/ampache.cfg.php"
 AMPACHE_CONF_NAME="ampache.cfg.php"
 DBNAME="MySQL.dump"
 
